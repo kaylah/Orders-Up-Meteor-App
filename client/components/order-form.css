@@ -1,0 +1,8 @@
+.order-form h2 .fa {
+	margin-right: 0.5rem;
+}
+
+.form-field-wrapper [name="drinkQty"],
+.form-field-wrapper [name="hookahQty"] {
+	width: 3.125rem;
+}

@@ -1,0 +1,120 @@
+<template name="orderForm">
+
+	<h1>Order Form</h1>
+
+	<form class="order-form">
+		
+<!-- 		<a href="#" class="icon-button">
+			<i class="fa fa-glass"></i>
+		</a>
+
+		<a href="#" class="icon-button">
+			<i class="fa fa-fire"></i>
+		</a> -->
+
+		<h2> <i class="fa fa-glass"></i>Beverages</h2>
+
+		<div class="form-row clearfix">
+
+			<div class="form-field-wrapper">
+
+				<select name="beverageType" class="beverageTypes">
+					<option>Select type</option>
+					{{ #each indexedArray beverageTypes }}
+						<option value="{{ this }}">{{ this }}</option>
+					{{ /each }}
+				</select>
+
+			</div>
+
+			<div class="form-field-wrapper">
+
+				{{#if beverageNames}}
+					<select name="beverageName" class="beverageNames">
+						<option>Select flavor</option>
+						{{ #each indexedArray beverageNames }}
+							<option value="{{ this.name }}">{{ this.name }}</option>
+						{{ /each }}
+					</select>
+				{{ /if }}
+
+			</div>
+
+			<div class="form-field-wrapper">
+				<label for="drinkQty">Qty</label>
+				<input class="drinkQty" name="drinkQty" type="number" value="1" />
+			</div>
+			<a href="#" class="addBeverage">
+				<i class="fa fa-plus"></i>
+			</a>
+		</div>
+
+		{{#if selectedBeverages}}
+			<div class="addedBeverages">
+				<ul>
+					{{ #each indexedArray selectedBeverages }}
+						<li>{{this.name}} {{this.flavor}} {{this.qty}}</li>
+					{{ /each }}
+				</ul>
+			</div>
+		{{ /if }}
+
+
+
+		<h2><i class="fa fa-fire"></i> Hookah</h2>
+
+		<div class="form-row clearfix">
+
+			<div class="form-field-wrapper">
+
+				<select class="hookahNames">
+					<option>Select name</option>
+					{{ #each indexedArray hookahTypes }}
+						<option value="{{ this }}">{{ this }}</option>
+					{{ /each }}
+				</select>
+
+			</div>
+
+			<div class="form-field-wrapper">
+
+				{{#if hookahFlavors}}
+					<select name="hookahFlavor" class="hookahFlavors">
+						<option>Select flavor</option>
+						{{ #each indexedArray hookahFlavors }}
+							<option value="{{ this.name }}">{{ this.name }}</option>
+						{{ /each }}
+					</select>
+				{{ /if }}
+
+			</div>
+
+			<div class="form-field-wrapper">
+
+				<label for="hookahQty">Qty</label>
+				<input class="hookahQty" name="hookahQty" type="number" value="1" />
+
+			</div>
+
+			<a href="#" class="addHookah">
+				<i class="fa fa-plus"></i>
+			</a>
+
+		</div>
+
+		{{#if selectedHookah}}
+			<div class="addedHookah">
+				<ul>
+					{{ #each indexedArray selectedHookah }}
+						<li>{{this.name}} {{this.flavor}} {{this.qty}}</li>
+					{{ /each }}
+				</ul>
+			</div>
+		{{ /if }}
+
+		<div class="form-row clearfix">
+			<button type="submit" class="button-default button-submit create-order">Create Order</button>
+		</div>
+	</form>
+
+</template>

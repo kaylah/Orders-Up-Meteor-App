@@ -1,0 +1,30 @@
+<template name="order">
+
+	<div class="order well well-lg" data-id="{{ _id }}" data-orderId="{{ orderNumber }}">
+		
+		<h3>Order {{ orderNumber }}</h3>
+		<div class="order-details">
+
+			<h4>Server: {{ server }}</h4>
+
+			<h5>Status: {{ status }}</h5>
+
+			<div class="order-list-wrapper">
+
+				{{ #each indexedArray itemsOrdered }}
+					<div class="item orderedItem" data-id="{{ id }}">
+						<h6>{{ name }}</h6>
+						<div class="qty">Qty: {{ qty }}</div>
+						<div class="status state-{{ status }}">{{ status }} <i class="fa fa-check-square"></i></div>
+						<a href="#" class="changeStatus btn btn-primary btn-block" data-id="{{ _index }}">
+							Is ready?
+						</a>
+					</div>
+				{{ /each }}
+
+			</div>
+	
+		</div>
+	</div>
+
+</template>
