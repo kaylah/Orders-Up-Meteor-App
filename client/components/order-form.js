@@ -151,6 +151,7 @@ Template.orderForm.events({
 			}
 		Orders.insert(newOrder);
 		Session.set('orderedItems', []);
+		sAlert.success('Your order has been added');
 		//orderedItems.push(newOrderedItem);
 		//Session.set('orderedItems', orderedItems);
     }
