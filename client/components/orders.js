@@ -1,7 +1,7 @@
-Template.orders.helpers({
+/*Template.orders.helpers({
 
 	orders: function() {
 		return Orders.find();
 	}
 
-});
+});*/

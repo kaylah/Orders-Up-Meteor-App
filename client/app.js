@@ -26,4 +26,31 @@ Router.route('/create-order', {
     template: 'order-form'
 });
 
-Router.route('/orders');
+Router.route('/orders', {
+    // options for the route
+    data: function(){
+        var allOrders = { orders: Orders.find() };
+        return allOrders;
+    },
+    template: 'orders'
+});
+
+Router.route('/orders/:orderType', {
+    // options for the route
+    data: function(){
+        var currentOrderType = this.params.orderType;
+        var ordersOfType = Orders.find({ 'itemsOrdered.type': currentOrderType });
+        var allOrdersOfType = { orders: ordersOfType };
+        return allOrdersOfType;
+    },
+    template: 'orders'
+});
+
+Router.route('/order/:orderNumber', {
+    // options for the route
+    data: function(){
+        var currentOrderNumber = this.params.orderNumber;
+        return Orders.findOne({ orderNumber: currentOrderNumber });
+    },
+    template: 'order'
+});
