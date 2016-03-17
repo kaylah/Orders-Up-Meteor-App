@@ -1,3 +1,5 @@
+Meteor.subscribe('menu');
+
 Template.orderForm.helpers({
 
 	menu: function() {
@@ -5,8 +7,8 @@ Template.orderForm.helpers({
 	},
 
 	beverageTypes: function() {
-		var allBeverages = Menu.find({type: "Beverage"}).fetch(),
-			uniqueBeverageTypes = _.uniq(_.pluck(allBeverages, 'subtype'));
+		var allBeverages = Menu.find({"type": "Beverage"}).fetch();
+		var uniqueBeverageTypes = _.uniq(_.pluck(allBeverages, 'subtype'));
 		return uniqueBeverageTypes;
 	},
 
@@ -36,7 +38,6 @@ Template.orderForm.helpers({
 		var orderedItems = Session.get('orderedItems') || [];
 		if (!orderedItems) { return false; }
 		var allBeverages = _.where(orderedItems, {'type': 'Beverage'});
-		console.log('allBeverages', allBeverages);
 		return allBeverages;
 	},
 
@@ -44,7 +45,6 @@ Template.orderForm.helpers({
 		var orderedItems = Session.get('orderedItems') || [];
 		if (!orderedItems) { return false; }
 		var allHookah = _.where(orderedItems, {'type': 'Hookah'});
-		console.log('allHookah', allHookah);
 		return allHookah;
 	}
 });

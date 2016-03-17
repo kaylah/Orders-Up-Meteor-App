@@ -1,10 +1,10 @@
 // run this when the meteor app is started
 Meteor.startup(function() {
 
-	// if there are no polls available, create sample data
+	// if there are no orders available, create sample data
 	if (Orders.find().count() === 0) {
 
-		// create sample polls
+		// create sample orders
 		var sampleOrders = [
 			{
 				'orderNumber': '123',
@@ -83,7 +83,7 @@ Meteor.startup(function() {
 			}
 		];
 
-		// loop over each sample poll and insert into database
+		// loop over each sample order and insert into database
 		_.each(sampleOrders, function(order) {
 			Orders.insert(order);
 		});

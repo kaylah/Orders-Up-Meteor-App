@@ -1,10 +1,10 @@
 // run this when the meteor app is started
 Meteor.startup(function() {
 
-	// if there are no polls available, create sample data
+	// if there are no menu items available, create sample data
 	if (Menu.find().count() === 0) {
 
-		// create sample polls
+		// create sample menu
 		var sampleMenu = [
 			{
 				'name': 'Al Fakher Mixes',
@@ -113,30 +113,18 @@ Meteor.startup(function() {
 						'name': 'Blueberry'
 					}
 				]
-			}/*,
-			{
-				question: 'Is Meteor awesome?',
-				choices: [
-					{ text: 'Of course!', votes: 0 },
-					{ text: 'Eh', votes: 0 },
-					{ text: 'No. I like plain JS', votes: 0 }
-				]
-			},
-			{
-				question: 'Is CSS3 Flexbox the greatest thing since array_slice(bread)?',
-				choices: [
-					{ text: '100% yes', votes: 0 },
-					{ text: '200% yes', votes: 0 },
-					{ text: '300% yes', votes: 0 }
-				]
-			}*/
+			}
 		];
 
-		// loop over each sample poll and insert into database
+		// loop over each sample menu item and insert into database
 		_.each(sampleMenu, function(menuItem) {
 			Menu.insert(menuItem);
 		});
 
 	}
 
+});
+
+Meteor.publish("menu", function () {
+	return Menu.find();
 });
